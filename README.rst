@@ -1,14 +1,16 @@
-Cookiecutter Ansible Role
-=========================
+Cookiecutter Golang Graphql
+===========================
+
+cookiecutter for golang graphql
 
 |Build Status| |GitHub issues| |GitHub license|
 
 cookiecutter for ansible
 
 :Version: 0.0.0
-:Web: https://github.com/luismayta/cookiecutter-ansible-role
-:Download: https://github.com/luismayta/cookiecutter-ansible-role
-:Source: https://github.com/luismayta/cookiecutter-ansible-role
+:Web: https://github.com/equipindustry/cookiecutter-ansible-role
+:Download: https://github.com/equipindustry/cookiecutter-ansible-role
+:Source: https://github.com/equipindustry/cookiecutter-ansible-role
 :Keywords: cookiecutter-ansible-role
 
 .. contents:: Table of Contents:
@@ -61,7 +63,7 @@ Generate a Cookiecutter Base project::
 
 .. code-block:: bash
 
-    cookiecutter gh:luismayta/cookiecutter-ansible-role
+    cookiecutter gh:equipindustry/cookiecutter-ansible-role
 
 Support
 -------
@@ -133,13 +135,13 @@ Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
 .. _`Email`: slovacus@gmail.com
     :target: mailto:slovacus@gmail.com
 .. _`Twitter`: https://twitter.com/slovacus
-.. _`Website`: http://luismayta.github.io
+.. _`Website`: https://luismayta.github.io
 .. _`PGP`: https://keybase.io/luismayta/pgp_keys.asc
 
-.. |Build Status| image:: https://travis-ci.org/luismayta/cookiecutter-ansible-role.svg
-   :target: https://travis-ci.org/luismayta/cookiecutter-ansible-role
-.. |GitHub issues| image:: https://img.shields.io/github/issues/luismayta/cookiecutter-ansible-role.svg
-   :target: https://github.com/luismayta/cookiecutter-ansible-role/issues
+.. |Build Status| image:: https://travis-ci.org/equipindustry/cookiecutter-ansible-role.svg
+   :target: https://travis-ci.org/equipindustry/cookiecutter-ansible-role
+.. |GitHub issues| image:: https://img.shields.io/github/issues/equipindustry/cookiecutter-ansible-role.svg
+   :target: https://github.com/equipindustry/cookiecutter-ansible-role/issues
 .. |GitHub license| image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
    :target: LICENSE
 
@@ -150,8 +152,8 @@ Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
 .. Footer:
 .. |linkedin| image:: http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png
     :target: https://pe.linkedin.com/in/luismayta
-.. |beacon| image:: https://ga-beacon.appspot.com/UA-65019326-1/github.com/luismayta/cookiecutter-ansible-role/readme
-    :target: https://github.com/luismayta/cookiecutter-ansible-role
+.. |beacon| image:: https://ga-beacon.appspot.com/UA-65019326-1/github.com/equipindustry/cookiecutter-ansible-role/readme
+    :target: https://github.com/equipindustry/cookiecutter-ansible-role
 .. |made| image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
     :target: http://www.python.org
 
