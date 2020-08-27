@@ -1,0 +1,7 @@
+origin: github.com/equipindustry/cookiecutter-ansible-role
+issue_tracker: GITHUB
+auth:
+  type: apitoken
+ignored:
+  - vendor/
+  - node_modules/
