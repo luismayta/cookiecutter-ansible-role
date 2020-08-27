@@ -1,7 +1,7 @@
-Cookiecutter Golang Graphql
-===========================
+Cookiecutter Ansible Role
+=========================
 
-cookiecutter for golang graphql
+cookiecutter for ansible role
 
 |Build Status| |GitHub issues| |GitHub license|
 
