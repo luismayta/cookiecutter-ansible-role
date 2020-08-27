@@ -1,7 +1,7 @@
 {
   "keywords": [],
   "name": "@equipindustry/cookiecutter-ansible-role",
-  "description": "cookiecutter for golang graphql",
+  "description": "cookiecutter for ansible role",
   "private": true,
   "repository": "ssh://git@github.com/equipindustry/cookiecutter-ansible-role.git",
   "author": "Luis Mayta <slovacus@gmail.com>",

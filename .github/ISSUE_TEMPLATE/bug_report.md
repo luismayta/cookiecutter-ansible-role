@@ -20,7 +20,7 @@ A clear and concise description of what you expected to happen.
 **Desktop (please complete the following information):**
  - OS: [e.g. OSX]]
  - Version [e.g. Mac OS X 10.2]
- - Golang Version [e.g. go1.10.3]
+ - Application Version [e.g. 1.10.3]
 
 **Additional context**
 Add any other context about the problem here.
