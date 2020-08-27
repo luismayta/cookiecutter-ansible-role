@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Tests for the cookiecutter template."""
-from hamcrest import assert_that
-
+# TODO 4: refactor change assert to assert_that.
 from contextlib import contextmanager
 
 import pytest
 from cookiecutter.utils import rmtree
-
+from hamcrest import assert_that, equal_to, is_not, none
 
 YES_NO_CHOICES = [
     ("y", True),
@@ -29,9 +28,9 @@ def bake_in_temp_dir(cookies, *args, **kwargs):
 
 def test_bake_project_with_defaults(cookies):
     with bake_in_temp_dir(cookies) as result:
-        assert result.exit_code == 0
-        assert result.exception is None
-        assert result.project.isdir()
+        assert_that(equal_to(result.exit_code), 0)
+        assert_that(none(result.exception))
+        assert_that(is_not(result.project.isdir(), None))
         found_toplevel_files = [f.basename for f in result.project.listdir()]
         assert "setup.py" in found_toplevel_files
         assert "tox.ini" in found_toplevel_files

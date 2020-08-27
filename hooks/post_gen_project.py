@@ -1,41 +1,89 @@
 # -*- coding: utf-8 -*-
 
-"""Post generation script"""
+"""
+Does the following:
+
+1. Inits git if used
+2. Deletes dockerfiles if not going to be used
+3. Deletes config utils if not needed
+"""
 
 import os
-import random
-import string
+import shutil
+from subprocess import Popen
 
+# Get the root project directory
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 DOCKER_FILES = (".dockerignore", "docker-compose.yml")
 
 
-def generate_random_string(
-    length=25, allowed_chars=string.ascii_letters + string.digits
-):
+def remove_file(filename):
     """
-    Generate a random string.
-
-    :param length: The length of the desired string
-    :type length: int
-    :param allowed_chars: The set of allowed characters
-    :type allowed_chars: str
-    :returns: Random string
-    :rtype: str
+    generic remove file from project dir
     """
-    return "".join(random.choice(allowed_chars) for i in range(length))
+    fullpath = os.path.join(PROJECT_DIRECTORY, filename)
+    if os.path.exists(fullpath):
+        os.remove(fullpath)
 
 
-def remove_file(filepath):
+def init_git():
     """
-    Remove a file with the given path.
-
-    :param str filepath: Path of the file.
+    Initialises git on the new project folder
     """
-    os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
+    git_commands = [
+        ["git", "init"],
+        ["git", "add", "."],
+        ["git", "commit", "-a", "-m", "Initial Commit."],
+    ]
+
+    for command in git_commands:
+        git = Popen(command, cwd=PROJECT_DIRECTORY)
+        git.wait()
 
 
-if __name__ == "__main__":
-    if "{{ cookiecutter.use_docker }}".lower() in ("n", "no"):
-        for filename in DOCKER_FILES:
-            remove_file(filename)
+def remove_docker_files():
+    """
+    Removes files needed for docker if it isn't going to be used
+    """
+    for filename in [
+        "Dockerfile",
+    ]:
+        os.remove(os.path.join(PROJECT_DIRECTORY, filename))
+
+
+def remove_jira_files():
+    """
+    Removes files needed for viper config utils
+    """
+    shutil.rmtree(os.path.join(PROJECT_DIRECTORY, ".jira"))
+
+
+def remove_circleci_files():
+    """
+    Removes files needed for viper config utils
+    """
+    shutil.rmtree(os.path.join(PROJECT_DIRECTORY, ".circleci"))
+
+
+# 1. Remove Dockerfiles if docker is not going to be used
+if "{{ cookiecutter.use_docker }}".lower() != "y":
+    remove_docker_files()
+
+# Remove jira utils if not seleted
+if "{{ cookiecutter.use_jira }}".lower() != "y":
+    remove_jira_files()
+
+# 5. Remove unused ci choice
+if "{{ cookiecutter.use_ci}}".lower() == "travis":
+    remove_circleci_files()
+elif "{{ cookiecutter.use_ci}}".lower() == "circle":
+    remove_file(".travis.yml")
+else:
+    remove_file(".travis.yml")
+    remove_circleci_files()
+
+# 7. Initialize Git (should be run after all file have been modified or deleted)
+if "{{ cookiecutter.use_git }}".lower() == "y":
+    init_git()
+else:
+    remove_file(".gitignore")
