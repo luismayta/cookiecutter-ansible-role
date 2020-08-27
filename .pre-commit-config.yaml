@@ -1,8 +1,7 @@
+exclude: ^(\.|\{\{cookiecutter\.app_name\}\}/\.|\{\{cookiecutter\.app_name\}\}/.tmuxinator\.yml|\{\{cookiecutter\.app_name\}\}/.zunit.yaml|\{\{cookiecutter\.app_name\}\}/provision/(docker|docker-compose)/\.)
 default_language_version:
   # force all unspecified python hooks to run python3
   python: python3.8.0
-
-exclude: ^(\.|\{\{cookiecutter\.repository_name\}\}/\.|\{\{cookiecutter\.repository_name\}\}/.tmuxinator\.yml|\{\{cookiecutter\.repository_name\}\}/.zunit.yaml|\{\{cookiecutter\.repository_name\}\}/provision/(docker|docker-compose)/\.)
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit
@@ -139,3 +138,9 @@ repos:
         entry: --entrypoint /bin/hadolint hadolint/hadolint:latest --ignore DL3008 --ignore DL3013 --ignore DL3018 --ignore DL3008 --ignore DL4006 --ignore SC2001 --ignore SC2086 --ignore SC2102 -
         types: [file]
         files: Dockerfile(.*)
+        exclude: \{\{cookiecutter\.app_name\}\}
+      - id: todocheck
+        name: todocheck
+        language: system
+        pass_filenames: true
+        entry: todocheck
