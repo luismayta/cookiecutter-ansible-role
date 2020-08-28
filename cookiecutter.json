@@ -31,5 +31,6 @@
   ],
   "use_docker": "y",
   "use_git": "y",
+  "use_jira": "y",
   "use_ci": ["travis", "circle", "none"]
 }
