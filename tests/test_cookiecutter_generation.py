@@ -2,11 +2,11 @@
 
 import os
 import re
-import sh
+from io import open
 
 import pytest
+import sh
 from binaryornot.check import is_binary
-from io import open
 
 PATTERN = "{{(\s?cookiecutter)[.](.*?)}}"
 RE_OBJ = re.compile(PATTERN)
@@ -16,16 +16,11 @@ RE_OBJ = re.compile(PATTERN)
 def context():
     return {
         "full_name": "Test Author",
-        "github_username": "lacion",
+        "github_username": "luismayta",
         "app_name": "MyTestProject",
         "project_short_description": "A short description of the project.",
-        "docker_hub_username": "lacion",
-        "docker_image": "lacion/docker-alpine:latest",
-        "docker_build_image": "lacion/docker-alpine:gobuildimage",
         "use_docker": "y",
         "use_git": "y",
-        "use_logrus_logging": "y",
-        "use_viper_config": "y",
     }
 
 
@@ -65,7 +60,7 @@ def test_default_configuration(cookies, context):
 
 
 @pytest.fixture(
-    params=["use_docker", "use_git", "use_logrus_logging", "use_viper_config"]
+    params=["use_docker", "use_git"]
 )
 def feature_context(request, context):
     context.update({request.param: "n"})
